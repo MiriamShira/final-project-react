@@ -16,6 +16,9 @@ export default function AllergensForm() {
     }
   {/* <FormButton title="moreAllergen" onClick={this.setseeMoreAllergen(true)} /> */}
         
+
+
+        
         </div>
     )
   
