@@ -4,14 +4,14 @@ import '../css/collapsible.css'
 import NutritionalFact from './nutritionalFact'
 import AllergensForm from './allergens'
 export default function CollapsibleComponentbyButton() {
-    
+
     const hiddenTexts = [{
         label: 'NutritionalFact',
-        value: <NutritionalFact/>//'Text of Accordion 1'
+        value: <NutritionalFact />//'Text of Accordion 1'
     },
     {
         label: ' Allergens',
-        value: <AllergensForm/>//'Text of Accordion 2'
+        value: <AllergensForm />//'Text of Accordion 2'
     },
     ];
     return (
@@ -51,7 +51,7 @@ function AccordionItem(props) {
                 onClick={handleToggleVisibility}>
                 {props.hiddenText.label}
                 <span className={visibility ? 'fasfa-minus' : 'fasfa-minus'}
-                    value={visibility ? '-' : '+'}></span>
+                    >{visibility ? '-' : '+'}</span>
             </button>
             <div className={`accordion__content ${activeStatus}`}>
                 {

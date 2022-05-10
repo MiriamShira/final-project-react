@@ -3,11 +3,7 @@ import { useState } from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../css/signUp.css';
-import {
-    CollapsibleComponent,
-    CollapsibleHead,
-    CollapsibleContent
-} from "react-collapsible-component";
+
 
 export default function NutritionalFact() {
     const [carbohydrates, setcarbohydrates] = useState('');

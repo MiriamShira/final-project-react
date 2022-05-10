@@ -19,6 +19,7 @@
   .accordion {
     font-size: 17px;
     margin: 0 20px;
+    
   }
   
   .accordion__button {
@@ -30,6 +31,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: inherit;
+    background:#fff;
   }
   
   .accordion__button span {

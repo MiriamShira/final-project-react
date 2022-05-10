@@ -50,7 +50,7 @@ function Form(props) {
       />
 
     <FormButton title="Log in" />
-    {/* //<link>signUp</link> */}
+    <a href='/signup'>signUp</a>
   </div>
   )
 }
@@ -100,6 +100,7 @@ async function signIn(userName,password){
   
 fetch('api/users/'+{userName}+'/'+{password})
 .then((response)=>{
+ 
   if(response.status==200&&response.ok){
     return response.json
   }
@@ -108,7 +109,10 @@ fetch('api/users/'+{userName}+'/'+{password})
   }
 }
 
-)
+).then((response)=>{
+  alert(response.userName);
+  
+})
 
 
   .catch(reson=>{
