@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import '../css/collapsible.css'
+import '../../../css/collapsible.css'
 import NutritionalFact from './nutritionalFact'
 import AllergensForm from './allergens'
 export default function CollapsibleComponentbyButton() {

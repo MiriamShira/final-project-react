@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import { useState } from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '../css/signUp.css';
+import '../../../css/signUp.css';
 
 
 export default function NutritionalFact() {

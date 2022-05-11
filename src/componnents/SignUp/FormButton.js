@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import { useState, useEffect } from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '../css/signUp.css';
+import '../../css/signUp.css';
 
 
 export function FormButton(props) {

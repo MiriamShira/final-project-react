@@ -1,10 +1,9 @@
 import './App.css';
-import SignInForm from  './componnents/signIn';
-import SignUpForm from  './componnents/signUp';
+import SignInForm from  './componnents/SignIn/signIn';
+import SignUpForm from  './componnents/SignUp/signUp';
 import ReactDOM from 'react-dom';
-import { CollapsibleComponent } from "./componnents/collapsibleComponent";
-import UplodeImages from './componnents/uploadImage';
-import Home from './componnents/Home';
+
+import Home from './componnents/Home/Home';
 import {
   BrowserRouter as Router,
   Switch,
