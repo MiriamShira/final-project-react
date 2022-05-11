@@ -4,7 +4,7 @@ import SignUpForm from  './componnents/signUp';
 import ReactDOM from 'react-dom';
 import { CollapsibleComponent } from "./componnents/collapsibleComponent";
 import UplodeImages from './componnents/uploadImage';
-import ImageUpload from './componnents/uploadingimage'
+import Home from './componnents/Home';
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,10 +24,10 @@ function App() {
     <SignInForm />
     </Route>
     <Route path="/signup">
-    <SignUpForm />
+    <SignUpForm title='signUp' method='POST' />
     </Route> 
     <Route path="/" exact>
-    <ImageUpload/>
+    <Home/>
     </Route> 
  
   </Switch>

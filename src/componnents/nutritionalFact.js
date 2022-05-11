@@ -12,8 +12,6 @@ export default function NutritionalFact() {
     const [cholesterol, setcholesterol] = useState('');
     return (
         <div>
-
-
             <NutritionalFactInput description="Carbohydrates" value={carbohydrates} setValue={setcarbohydrates} />
             <NutritionalFactInput description="Fats" value={fats} setValue={setfats} />
             <NutritionalFactInput description="Sodium" value={sodium} setValue={setsodium} />

@@ -5,14 +5,14 @@ import NutritionalFact from './nutritionalFact'
 import AllergensForm from './allergens'
 export default function CollapsibleComponentbyButton() {
 
-    const hiddenTexts = [{
+    const hiddenTexts = [ {
+        label: 'Allergens',
+        value: <AllergensForm />//'Text of Accordion 2'
+    },{
         label: 'NutritionalFact',
         value: <NutritionalFact />//'Text of Accordion 1'
-    },
-    {
-        label: ' Allergens',
-        value: <AllergensForm />//'Text of Accordion 2'
-    },
+    }
+   
     ];
     return (
         <div>
@@ -22,19 +22,11 @@ export default function CollapsibleComponentbyButton() {
     );
 }
 
-
-
-// const Header = props => (
-//     <h1>{props.title}</h1>
-// );
-
 const Accordion = props => (
     <div className="accordion">
         {props.hiddenTexts.map((hiddenText) => <AccordionItem key={hiddenText.label} hiddenText={hiddenText} />)}
     </div>
 );
-
-
 
 function AccordionItem(props) {
     const [visibility, setvisibility] = useState(false)

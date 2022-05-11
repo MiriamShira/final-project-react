@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '../css/signIn.css';
 import { useHistory } from "react-router-dom";
-
+//yesterday is history tomorrow is mystery today is a gift that we have to advanched useHistory to fix your 
 
 export default function SignInForm() {
 
@@ -25,33 +25,35 @@ const FormHeader = props => (
 function Form(props) {
   const [userName, setuserName] = useState('');
   const [password, setpassword] = useState('');
-  const history=useHistory();
+  const history = useHistory();
   const FormButton = props => (
-    
+
     <div id="button" className="row">
-      <button onClick={() => {
-       
-       const user= signIn(userName,password);
-        if(user){
-          history.push('/signup')
+      <button onClick={async () => {
+
+        const user = await signIn(userName, password);
+        debugger
+        if (!user) {
+          history.push('/')
         }
+        
 
       }}>{props.title}</button>
     </div>
   );
 
   return (
-  <div id="container">
-    <FormInput description="userName" placeholder="Enter your userName" type="text"
-      value={userName}
-      setValue={setuserName} />
-    <FormInput description="password" placeholder="Enter your password" type="password"
-    value={password} setValue={setpassword}
+    <div id="container">
+      <FormInput description="userName" placeholder="Enter your userName" type="text"
+        value={userName}
+        setValue={setuserName} />
+      <FormInput description="password" placeholder="Enter your password" type="password"
+        value={password} setValue={setpassword}
       />
 
-    <FormButton title="Log in" />
-    <a href='/signup'>signUp</a>
-  </div>
+      <FormButton title="Log in" />
+      <a href='/signup'>signUp</a>
+    </div>
   )
 }
 
@@ -63,7 +65,7 @@ function Form(props) {
 const FormInput = props => (
   <div class="row">
     <label>{props.description}</label>
-    <input type={props.type} placeholder={props.placeholder}  value={props.value}
+    <input type={props.type} placeholder={props.placeholder} value={props.value}
       onChange={(e) => props.setValue(e.target.value)} />
   </div>
 );
@@ -93,29 +95,34 @@ const Google = props => (
 );
 
 //ReactDOM.render(<App />, document.getElementById('container'));
-async function signIn(userName,password){
-  
-  console.log(userName,password)
+async function signIn(userName, password) {
 
-  
-fetch('api/users/'+{userName}+'/'+{password})
-.then((response)=>{
- 
-  if(response.status==200&&response.ok){
-    return response.json
-  }
-  else{
-    throw new Error()
-  }
-}
+  console.log(userName, password)
+  fetch(`http://localhost:4020/api/users/sara@gmail.com/1234`)
+    .then((response) => {
+      debugger
 
-).then((response)=>{
-  alert(response.userName);
-  
-})
+      if (response.status === 200 && response.ok) {
+        debugger
+        console.log((response));
+        return response.json()
+      }
+      else {
+        throw new Error()
+      }
+    }
+
+    ).then((response) => {
+      console.log((response));
+      alert("hi " + response.firstname);
+      return true;
+    })
 
 
-  .catch(reson=>{
-    alert('לא הצלחתנו לאתר משתמש זה ודא כי שם המשתמש והסיסמא תקינים')}
+    .catch(error => {
+      alert('לא הצלחתנו לאתר משתמש זה ודא כי שם המשתמש והסיסמא תקינים')
+      console.log(error);
+      return false; 
+    }
     )
 }
