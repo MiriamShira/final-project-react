@@ -1,49 +1,67 @@
 import { render } from '@testing-library/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../../../css/signUp.css';
-
+import allergensToSaveAction from './allergensArrayAction';
+import store from '../../store'
 export default function AllergensForm() {
-    const [commonAllergen, setcommonAllergen] = useState([{description:'nuts',check:true},{description:'milk',check:false}]);
-    const [moreAllergen, setmoreAllergen] = useState([{description:'nuts2'},{description:'milk2'}]);
+
+ 
+    const [commonAllergen, setcommonAllergen] = useState([]);
+    const [moreAllergen, setmoreAllergen] = useState([]);
     const [seeMoreAllergen, setseeMoreAllergen] = useState(false);
+    const [allergensformstore,setallergensformstore]=useState([]);
+
+
+    useEffect(()=>{
+    fetch(`http://localhost:4020/api/allergens`).then((res)=>{
+  if(res.status===200&&res.ok){
+    return res.json();
+  }
+    }   ).then((res)=> setcommonAllergen(res))}
+    ,[])
+
     return( <div>
         {
   commonAllergen.map((allergen, index) =>
     <FormInput key={index} description={allergen.description}  value={allergen.description}
-    setValue={setcommonAllergen} check={allergen.check} commonAllergen={commonAllergen}/>)
+    allergensformstore={allergensformstore}
+   
+     commonAllergen={commonAllergen} setAllergen={setallergensformstore}/>)
     }
-  {/* <FormButton title="moreAllergen" onClick={this.setseeMoreAllergen(true)} /> */}
-        
-
-
-        
-        </div>
+</div>
     )
   
 }
 
-
-const FormButton = props => (
-    <div id="button" className="row">
-      <button>{props.title}</button>
-    </div>
-  );
-  
   const FormInput = props => (
-    //const[checked,setchecked]=useState(false)
     <div className="row">
       <label>{props.description}</label>
       <input type="checkbox" placeholder={props.placeholder}
       defaultChecked={props.check}
-        value={props.value}
-        onChange={(e) => { console.log(props.commonAllergen)
-          props.commonAllergen.map((Allergen)=>{
-                if(Allergen.description===props.description){
-                    Allergen.check=!Allergen.check
-                }})
-                console.log(props.commonAllergen)
+        value={props.value} onChange={(e) => {
+          if(e.target.checked){
+     debugger
+          let allergentoAdd={
+     description:e.target.value
+   }
+            props.setAllergen([allergentoAdd,...props.allergensformstore])
+            console.log(props.allergensformstore );
+            store.dispatch(allergensToSaveAction(props.allergensformstore));
+                     
+          console.log(store.getState().allergensToSave );
+          }
+          else{
+       
+            props.setAllergen(props.allergensformstore.filter((item)=>{return item.description !==e.target.value}))
+            store.dispatch(allergensToSaveAction(props.allergensformstore));
+  
+          }
+      
+
+          console.log(store.getState().allergensToSave );
+
               }
            
             }

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import '../../../css/collapsible.css'
 import NutritionalFact from './nutritionalFact'
@@ -7,16 +6,15 @@ export default function CollapsibleComponentbyButton() {
 
     const hiddenTexts = [ {
         label: 'Allergens',
-        value: <AllergensForm />//'Text of Accordion 2'
+        value: <AllergensForm />
     },{
         label: 'NutritionalFact',
-        value: <NutritionalFact />//'Text of Accordion 1'
+        value: <NutritionalFact />
     }
    
     ];
     return (
         <div>
-            {/* <Header title={title} /> */}
             <Accordion hiddenTexts={hiddenTexts} />
         </div>
     );
@@ -34,8 +32,6 @@ function AccordionItem(props) {
     const handleToggleVisibility = props => (
         setvisibility(!visibility)
     )
-
-
 
     return (
         <div>

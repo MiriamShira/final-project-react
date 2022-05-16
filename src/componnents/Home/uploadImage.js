@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 //import ImageUploader from "react-images-upload";
 import ImageUploading from 'react-images-uploading';
-import Dropzone from "react-dropzone";
+//import Dropzone from "react-dropzone";
 
 
 

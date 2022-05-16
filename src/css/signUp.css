@@ -13,9 +13,9 @@ html{
 #signUpform{
   max-width: 500px;
   min-width: 300px;
-  max-height:1000px;
+  /* max-height:1000px; */
   width: 30%;
-  height: 90%;
+  height: 100%;
   margin: 100px auto;
   background-color: #FFFFFF;
   border-radius: 25px;

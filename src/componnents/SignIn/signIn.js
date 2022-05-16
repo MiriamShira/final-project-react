@@ -4,7 +4,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '../../css/signIn.css';
 import { useHistory } from "react-router-dom";
-//yesterday is history tomorrow is mystery today is a gift that we have to advanched useHistory to fix your 
+import signInAction from './action';
+import { Dispatch } from 'react';
+import store from '../store'
 
 export default function SignInForm() {
 
@@ -12,7 +14,8 @@ export default function SignInForm() {
     <div id="signInform">
       <FormHeader title="signIn" />
       <Form />
-      <OtherMethods />
+      <br></br>
+      {/* <OtherMethods /> */}
     </div>
   )
 }
@@ -23,7 +26,8 @@ const FormHeader = props => (
 
 
 function Form(props) {
-  const [userName, setuserName] = useState('');
+  const [userName, setuserName] = useState(store.getState().email);
+ //  const [userName, setuserName] = useState('');
   const [password, setpassword] = useState('');
   const history = useHistory();
   const FormButton = props => (
@@ -55,15 +59,10 @@ function Form(props) {
       <a href='/signup'>signUp</a>
     </div>
   )
-}
-
-
-;
-
-
+};
 
 const FormInput = props => (
-  <div class="row">
+  <div className="row">
     <label>{props.description}</label>
     <input type={props.type} placeholder={props.placeholder} value={props.value}
       onChange={(e) => props.setValue(e.target.value)} />
@@ -71,8 +70,7 @@ const FormInput = props => (
 );
 
 const OtherMethods = props => (
-  <div id="alternativesignIn
-">
+  <div id="alternativesignIn">
     <label>Or sign in with:</label>
     <div id="iconGroup">
       <Facebook />
@@ -96,9 +94,9 @@ const Google = props => (
 
 //ReactDOM.render(<App />, document.getElementById('container'));
 async function signIn(userName, password) {
-
+  console.log('Initial state: ', store.getState())
   console.log(userName, password)
-  fetch(`http://localhost:4020/api/users/sara@gmail.com/1234`)
+  fetch(`http://localhost:4020/api/users/${userName}/${password}`)
     .then((response) => {
       debugger
 
@@ -114,13 +112,16 @@ async function signIn(userName, password) {
 
     ).then((response) => {
       console.log((response));
+      debugger
       alert("hi " + response.firstname);
+      store.dispatch(signInAction(response))
+      console.log('new state: ', store.getState())
       return true;
     })
 
 
     .catch(error => {
-      alert('לא הצלחתנו לאתר משתמש זה ודא כי שם המשתמש והסיסמא תקינים')
+      //alert('לא הצלחתנו לאתר משתמש זה ודא כי שם המשתמש והסיסמא תקינים')
       console.log(error);
       return false; 
     }
