@@ -44,7 +44,7 @@ debugger
       alerts: {
      
       allergens:store.getState().allergensToSave ,
-      nutritionalFacts: [{description:'',amount:0}]
+      nutritionalFacts: store.getState().nutritionalFactlist
    }
 
   };
