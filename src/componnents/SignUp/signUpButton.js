@@ -68,7 +68,7 @@ debugger
       console.log(response);
       store.dispatch(signUpAction(response))
       console.log('new state: ', store.getState())
-      alert(response.user.firstname);
+      alert("hi "+response.firstname);
 
     })
  .catch((reson) => {

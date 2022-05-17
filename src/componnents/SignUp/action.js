@@ -6,7 +6,6 @@ export default function signUpAction(response) {
 
       firstname: response.firstname,
       lastname: response.lastname,
-      lastname: response.lastname,
       language: response.language,
       email: response.email,
       password: response.password,

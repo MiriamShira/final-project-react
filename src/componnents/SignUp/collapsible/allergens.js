@@ -13,7 +13,10 @@ export default function AllergensForm() {
     const [seeMoreAllergen, setseeMoreAllergen] = useState(false);
     const [allergensformstore,setallergensformstore]=useState([]);
 
+useEffect(()=>{
+  store.dispatch(allergensToSaveAction(allergensformstore))
 
+},[allergensformstore])
     useEffect(()=>{
     fetch(`http://localhost:4020/api/allergens`).then((res)=>{
   if(res.status===200&&res.ok){
@@ -28,7 +31,9 @@ export default function AllergensForm() {
     <FormInput key={index} description={allergen.description}  value={allergen.description}
     allergensformstore={allergensformstore}
    
-     commonAllergen={commonAllergen} setAllergen={setallergensformstore}/>)
+     commonAllergen={commonAllergen} addAllergen={(e)=>setallergensformstore([e,...allergensformstore])}
+    delAllergen={(e)=>{setallergensformstore(allergensformstore.filter(item=>item.description !==e.description))}}
+      />)
     }
 </div>
     )
@@ -46,16 +51,16 @@ export default function AllergensForm() {
           let allergentoAdd={
      description:e.target.value
    }
-            props.setAllergen([allergentoAdd,...props.allergensformstore])
+            props.addAllergen(allergentoAdd)
             console.log(props.allergensformstore );
-            store.dispatch(allergensToSaveAction(props.allergensformstore));
+           
                      
           console.log(store.getState().allergensToSave );
           }
           else{
        
-            props.setAllergen(props.allergensformstore.filter((item)=>{return item.description !==e.target.value}))
-            store.dispatch(allergensToSaveAction(props.allergensformstore));
+            props.delAllergen(props.allergensformstore.find((item)=> item.description !==e.target.value))
+          
   
           }
       
