@@ -30,6 +30,7 @@ function signUpFetch(firstname, lastname, language, email, password) {
 const method=store.getState().user.email?'PUT':'POST'
 console.log(store.getState().user.email);
 console.log(store.getState().allergensToSave);
+console.log(store.getState().nutritionalFactlist);
 console.log(method);
 debugger
   // if (password !== passwordVerification) { debugger;

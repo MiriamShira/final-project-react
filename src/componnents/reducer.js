@@ -30,22 +30,18 @@ const reducer = (state = initialState, action) => {
         // debugger;
         case 'MODIFY-AMOUNT':
 debugger
+state.nutritionalFactlist.map((nutritionalFact) => {
+    if (nutritionalFact.description === action.nutritionalFactItem.description) {
+        nutritionalFact.amount = action.nutritionalFactItem.amount
+    }
+    console.log(nutritionalFact);
+    console.log(initialState.nutritionalFactlist);
+})
+ 
             return {
-                ...state, nutritionalFactlist: initialState.nutritionalFactlist.map((nutritionalFact) => {
-                    if (nutritionalFact.description === action.nutritionalFactItem.description) {
-                        nutritionalFact.amount = action.nutritionalFactItem.amount
-                    }
-                    console.log(nutritionalFact);
-                    console.log(initialState.nutritionalFactlist);
-                })
+                ...state, 
             }
-        // const a=
-        // props.nutritionalFactlis
-        //     }})
-        //     console.log(a)
-
-        // props.setValue(a);
-        // console.log(props.nutritionalFactlist);
+       
         default:
             return state;
     }
