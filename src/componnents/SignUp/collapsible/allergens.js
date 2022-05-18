@@ -17,6 +17,7 @@ useEffect(()=>{
   store.dispatch(allergensToSaveAction(allergensformstore))
 
 },[allergensformstore])
+
     useEffect(()=>{
     fetch(`http://localhost:4020/api/allergens`).then((res)=>{
   if(res.status===200&&res.ok){
@@ -24,6 +25,14 @@ useEffect(()=>{
   }
     }   ).then((res)=> setcommonAllergen(res))}
     ,[])
+    
+    useEffect(()=>{
+      fetch(`http://localhost:4020/api/allergens/more`).then((res)=>{
+    if(res.status===200&&res.ok){
+      return res.json();
+    }
+      }   ).then((res)=> setmoreAllergen(res))}
+      ,[seeMoreAllergen])
 
     return( <div>
         {
@@ -34,6 +43,19 @@ useEffect(()=>{
      commonAllergen={commonAllergen} addAllergen={(e)=>setallergensformstore([e,...allergensformstore])}
     delAllergen={(e)=>{setallergensformstore(allergensformstore.filter(item=>item.description !==e.description))}}
       />)
+    }
+    <button
+    onClick={()=>{setseeMoreAllergen(!seeMoreAllergen)}}>show more allergens</button>
+
+     {
+    seeMoreAllergen===true?
+  moreAllergen.map((allergen, index) =>
+    <FormInput key={index} description={allergen.description}  value={allergen.description}
+    allergensformstore={allergensformstore}
+   
+    moreAllergen={moreAllergen} addAllergen={(e)=>setallergensformstore([e,...allergensformstore])}
+    delAllergen={(e)=>{setallergensformstore(allergensformstore.filter(item=>item.description !==e.description))}}
+      />):''
     }
 </div>
     )
