@@ -27,18 +27,13 @@ const FormHeader = props => (
 
 function Form(props) {
   const [userName, setuserName] = useState('');
- //  const [userName, setuserName] = useState('');
   const [password, setpassword] = useState('');
   const history = useHistory();
-  const FormButton = props => (
 
+  const FormButton = props => (
     <div id="button" className="row">
       <button onClick={async () => {
-
-        const user = await signIn(userName, password).then(()=>history.push('/'));
-       
-        
-
+        const user = await signIn(userName, password).then(() => history.push('/'));
       }}>{props.title}</button>
     </div>
   );
@@ -46,12 +41,9 @@ function Form(props) {
   return (
     <div id="container">
       <FormInput description="userName" placeholder="Enter your userName" type="text"
-        value={userName}
-        setValue={setuserName} />
+        value={userName} setValue={setuserName} />
       <FormInput description="password" placeholder="Enter your password" type="password"
-        value={password} setValue={setpassword}
-      />
-
+        value={password} setValue={setpassword} />
       <FormButton title="Log in" />
       <a href='/signup'>signUp</a>
     </div>
@@ -113,14 +105,14 @@ async function signIn(userName, password) {
       alert("hi " + response.firstname);
       store.dispatch(signInAction(response))
       console.log('new state: ', store.getState())
-  
+
     })
 
 
     .catch(error => {
       //alert('לא הצלחתנו לאתר משתמש זה ודא כי שם המשתמש והסיסמא תקינים')
       console.log(error);
-      return false; 
+      return false;
     }
     )
 }

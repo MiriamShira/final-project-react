@@ -32,9 +32,7 @@ return(
             defaultValue={props.value}
             onChange={(e) => {
               store.dispatch(nutritionFactToSaveAction(e.target.value,props.description))
-                
-                 props.setValue(store.getState().nutritionalFactlist)
-
+                props.setValue(store.getState().nutritionalFactlist)
             }}
          
         /> gr per 100 gr of {props.description}in product

@@ -10,7 +10,7 @@ import { FormButton } from "./signUpButton"
 import signUpAction from '../SignUp/action';
 import { Dispatch } from 'react';
 import store from '../store'
-//1
+
 export default function SignUpForm(props) {
   return (
     <div id="signUpform">
@@ -18,14 +18,12 @@ export default function SignUpForm(props) {
       <Form title={props.title} />
     </div>
   )
-
 }
-//2
+
 const FormHeader = props => (
   <h2 id="headerTitle">{props.title}</h2>
 );
 
-//3
 function Form(props) {
   const [firstname, setfirstname] = useState(store.getState().user.firstname);
   const [lastname, setlastname] = useState(store.getState().user.lastname);
@@ -60,18 +58,18 @@ function Form(props) {
         email={email}
         password={password}
         // passwordVerification={passwordVerification}
-        title={props.title}  />
+        title={props.title} />
     </div>)
 };
-
-
 
 const FormInput = props => (
   <div className="row">
     <label>{props.description}</label>
+
     <input type={props.type} placeholder={props.placeholder}
       value={props.value}
       onChange={(e) => props.setValue(e.target.value)}
     />
+    
   </div>
 );
