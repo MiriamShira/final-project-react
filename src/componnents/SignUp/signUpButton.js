@@ -49,8 +49,7 @@ debugger
    }
 
   };
-  let url=method==='PUT'?`http://localhost:4020/api/users/${store.getState().user.email}`:`http://localhost:4020/api/users`;
-  fetch(url, {
+  fetch(`http://localhost:4020/api/users`, {
     method: method,
     headers: {
       'Content-Type': 'application/json'

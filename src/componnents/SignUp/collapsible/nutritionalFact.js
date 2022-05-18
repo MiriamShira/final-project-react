@@ -9,10 +9,6 @@ import store from '../../store'
 export default function NutritionalFact() {
     const [nutritionalFactlist, setnutritionalFactlist] = useState(store.getState().nutritionalFactlist);
   
-// useEffect(()=>{
-//     store.dispatch(nutritionFactToSaveAction(e.target.value,props.description))
-  
-//   },[nutritionalFactlist])
 
     return (
 
@@ -31,9 +27,9 @@ return(
         <input type="text" placeholder={"Enter an amount"}
             defaultValue={props.value}
             onChange={(e) => {
-              store.dispatch(nutritionFactToSaveAction(e.target.value,props.description))
+                store.dispatch(nutritionFactToSaveAction(e.target.value,props.description))
                 
-                 props.setValue(store.getState().nutritionalFactlist)
+                //props.setValue(store.getState().nutritionalFactlist)
 
             }}
          

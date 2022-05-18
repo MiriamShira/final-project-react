@@ -26,7 +26,7 @@ const FormHeader = props => (
 
 
 function Form(props) {
-  const [userName, setuserName] = useState('');
+  const [userName, setuserName] = useState(store.getState().email);
  //  const [userName, setuserName] = useState('');
   const [password, setpassword] = useState('');
   const history = useHistory();
@@ -35,8 +35,11 @@ function Form(props) {
     <div id="button" className="row">
       <button onClick={async () => {
 
-        const user = await signIn(userName, password).then(()=>history.push('/'));
-       
+        const user = await signIn(userName, password);
+        debugger
+        if (!user) {
+          history.push('/')
+        }
         
 
       }}>{props.title}</button>
@@ -113,7 +116,7 @@ async function signIn(userName, password) {
       alert("hi " + response.firstname);
       store.dispatch(signInAction(response))
       console.log('new state: ', store.getState())
-  
+      return true;
     })
 
 
