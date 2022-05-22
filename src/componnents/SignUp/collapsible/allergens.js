@@ -17,6 +17,8 @@ export default function AllergensForm() {
     [allergensformstore])
 
   useEffect(()=>{
+},[allergensformstore])
+    useEffect(()=>{
     fetch(`http://localhost:4020/api/allergens`).then((res)=>{
     if(res.status===200&&res.ok){
       return res.json();

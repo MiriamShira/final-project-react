@@ -9,10 +9,6 @@ import store from '../../store'
 export default function NutritionalFact() {
     const [nutritionalFactlist, setnutritionalFactlist] = useState(store.getState().nutritionalFactlist);
   
-// useEffect(()=>{
-//     store.dispatch(nutritionFactToSaveAction(e.target.value,props.description))
-  
-//   },[nutritionalFactlist])
 
     return (
 

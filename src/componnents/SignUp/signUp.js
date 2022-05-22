@@ -36,7 +36,7 @@ function Form(props) {
 
   return (
     <div id="container">
-      <FormInput description="firstName" placeholder={"Enter your firstname"} type="text"
+      <FormInput description="firstName" placeholder="Enter your firstname" type="text"
         value={firstname} setValue={setfirstname} />
       <FormInput description="lastname" placeholder="Enter your lastname" type="text"
         value={lastname} setValue={setlastname} />

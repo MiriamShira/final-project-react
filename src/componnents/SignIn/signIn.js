@@ -26,7 +26,8 @@ const FormHeader = props => (
 
 
 function Form(props) {
-  const [userName, setuserName] = useState('');
+  const [userName, setuserName] = useState(store.getState().email);
+ //  const [userName, setuserName] = useState('');
   const [password, setpassword] = useState('');
   const history = useHistory();
 
@@ -105,7 +106,6 @@ async function signIn(userName, password) {
       alert("hi " + response.firstname);
       store.dispatch(signInAction(response))
       console.log('new state: ', store.getState())
-
     })
 
 
