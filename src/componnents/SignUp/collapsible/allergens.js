@@ -13,6 +13,7 @@ export default function AllergensForm() {
     const [allergensformstore,setallergensformstore]=useState([]);
 
   useEffect(()=>{
+    debugger
     store.dispatch(allergensToSaveAction(allergensformstore))}, 
     [allergensformstore])
 
@@ -41,10 +42,13 @@ export default function AllergensForm() {
     allergensformstore={allergensformstore}
    
      commonAllergen={commonAllergen} addAllergen={(e)=>setallergensformstore([e,...allergensformstore])}
+    //  commonAllergen={commonAllergen} addAllergen={(e)=>setallergensformstore([])}
     delAllergen={(e)=>{setallergensformstore(allergensformstore.filter(item=>item.description !==e.description))}}
       />)
     }
     
+
+
     <button
     onClick={()=>{setseeMoreAllergen(!seeMoreAllergen)}}>show more allergens</button>
 
@@ -62,7 +66,9 @@ export default function AllergensForm() {
     )
   
 }
-
+// const onchange=(selected,key)=>{
+//   setallergensformstore({(prev)=>...prev,[key]})
+// }
   const FormInput = props => (
     <div className="row">
       <label>{props.description}</label>
@@ -77,6 +83,7 @@ export default function AllergensForm() {
             props.addAllergen(allergentoAdd)
             console.log(props.allergensformstore );           
             console.log(store.getState().allergensToSave );
+  // onchange(e.target.value ,'egg')
           }
           else{
        

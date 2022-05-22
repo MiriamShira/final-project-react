@@ -4,9 +4,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '../../css/signIn.css';
 import { useHistory } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import signInAction from './action';
 import { Dispatch } from 'react';
 import store from '../store'
+import Home from '../Home/Home';
 
 export default function SignInForm() {
 
@@ -30,11 +32,20 @@ function Form(props) {
  //  const [userName, setuserName] = useState('');
   const [password, setpassword] = useState('');
   const history = useHistory();
+  // const navigate = useNavigate();
 
   const FormButton = props => (
     <div id="button" className="row">
       <button onClick={async () => {
-        const user = await signIn(userName, password).then(() => history.push('/'));
+        const user = await signIn(userName, password)
+        if(user!==null)
+        {
+          debugger
+          history.push('/signup');
+          // <Home/>
+
+        }
+        // .then(() => history.push('/'));
       }}>{props.title}</button>
     </div>
   );
@@ -81,38 +92,23 @@ const Twitter = props => (
 const Google = props => (
   <a href="#" id="googleIcon"></a>
 );
-
-//ReactDOM.render(<App />, document.getElementById('container'));
 async function signIn(userName, password) {
+  debugger
+  let data
   console.log('Initial state: ', store.getState())
   console.log(userName, password)
-  fetch(`http://localhost:4020/api/users/${userName}/${password}`)
-    .then((response) => {
-      debugger
+  try {
+    debugger
+    var response=await fetch(`http://localhost:4020/api/users/${userName}/${password}`)
+if(response.ok&&response.status === 200 ){
 
-      if (response.status === 200 && response.ok) {
-        debugger
-        console.log((response));
-        return response.json()
-      }
-      else {
-        throw new Error()
-      }
-    }
-
-    ).then((response) => {
-      console.log((response));
-      debugger
-      alert("hi " + response.firstname);
-      store.dispatch(signInAction(response))
-      console.log('new state: ', store.getState())
-    })
-
-
-    .catch(error => {
-      //alert('לא הצלחתנו לאתר משתמש זה ודא כי שם המשתמש והסיסמא תקינים')
-      console.log(error);
-      return false;
-    }
-    )
+data=await response.json()
+store.dispatch(signInAction(data))
+debugger
+console.log(store.getState())
+alert("hi " + data.lastname);
+}
+  } catch (error) {
+    alert("err:"+error)
+  }
 }
