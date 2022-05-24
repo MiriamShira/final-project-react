@@ -43,7 +43,7 @@ debugger
     , email: email
     , password: password,
       alerts: {
-     
+
       allergens:store.getState().allergensToSave ,
       nutritionalFacts: store.getState().nutritionalFactlist
    }
@@ -72,7 +72,7 @@ debugger
       alert("hi "+response.firstname);
 
     })
- .catch((reson) => {
+    .catch((reson) => {
       alert(reson)
     }
     )

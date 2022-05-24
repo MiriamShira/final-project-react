@@ -29,8 +29,8 @@ const reducer = (state = initialState, action) => {
             return { ...state, allergensToSave: action.allergensToSave };
         // debugger;
         case 'MODIFY-AMOUNT':
-debugger
-state.nutritionalFactlist.map((nutritionalFact) => {
+    debugger
+    state.nutritionalFactlist.map((nutritionalFact) => {
     if (nutritionalFact.description === action.nutritionalFactItem.description) {
         nutritionalFact.amount = action.nutritionalFactItem.amount
     }

@@ -27,10 +27,8 @@ return(
         <input type="text" placeholder={"Enter an amount"}
             defaultValue={props.value}
             onChange={(e) => {
-                store.dispatch(nutritionFactToSaveAction(e.target.value,props.description))
-                
-                //props.setValue(store.getState().nutritionalFactlist)
-
+              store.dispatch(nutritionFactToSaveAction(e.target.value,props.description))
+                props.setValue(store.getState().nutritionalFactlist)
             }}
          
         /> gr per 100 gr of {props.description}in product
