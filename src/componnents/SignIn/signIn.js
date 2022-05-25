@@ -70,28 +70,28 @@ const FormInput = props => (
   </div>
 );
 
-const OtherMethods = props => (
-  <div id="alternativesignIn">
-    <label>Or sign in with:</label>
-    <div id="iconGroup">
-      <Facebook />
-      <Twitter />
-      <Google />
-    </div>
-  </div>
-);
+// const OtherMethods = props => (
+//   <div id="alternativesignIn">
+//     <label for="iconGroup">Or sign in with:</label>
+//     <div id="iconGroup">
+//       <Facebook />
+//       <Twitter />
+//       <Google />
+//     </div>
+//   </div>
+// );
 
-const Facebook = props => (
-  <a href="#" id="facebookIcon"></a>
-);
+// const Facebook = props => (
+//   <a href="#" id="facebookIcon">Facebook</a>
+// );
 
-const Twitter = props => (
-  <a href="#" id="twitterIcon"></a>
-);
+// const Twitter = props => (
+//   <a href="#" id="twitterIcon"></a>
+// );
 
-const Google = props => (
-  <a href="#" id="googleIcon"></a>
-);
+// const Google = props => (
+//   <a href="#" id="googleIcon"></a>
+// );
 async function signIn(userName, password) {
   debugger
   let data
