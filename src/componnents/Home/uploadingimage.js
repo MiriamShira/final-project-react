@@ -30,7 +30,7 @@ export default function ImageUpload() {
           dragProps,
         }) => (
           // write your building UI
-          <div className="upload__image-wrapper">
+          <div className="upload__image-wrapper" >
             <button
               style={isDragging ? { color: 'red' } : undefined}
               onClick={onImageUpload}
