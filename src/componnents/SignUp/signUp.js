@@ -12,6 +12,8 @@ import { Dispatch } from 'react';
 import store from '../store'
 
 export default function SignUpForm(props) {
+ 
+
   return (
     <div id="signUpform">
       <FormHeader title={props.title} />
@@ -48,8 +50,8 @@ function Form(props) {
         value={password} setValue={setpassword} />
       {/* <FormInput description="password verification" placeholder="Enter your password again " type="password"
         value={passwordVerification} setValue={setpasswordVerification} /> */}
-
-      <CollapsibleComponentbyButton />
+{/* commponnent below is to enable allergy an nf costimizing. */}
+     <CollapsibleComponentbyButton /> {/*  */}
 
       <FormButton
         firstname={firstname}

@@ -10,6 +10,17 @@ const initialState = {
             nutritionalFacts: [{ description: '', amount: "0" }]
         }
     },
+    tmpUser: {
+        firstname: '',
+        lastname: '',
+        language: '',
+        email: '',
+        password: '',
+        alerts: {
+            allergens: [{ description: '' }],
+            nutritionalFacts: [{ description: '', amount: "0" }]
+        }
+    },
     allergensToSave: [
         { description: '' }
     ]
@@ -25,6 +36,8 @@ const reducer = (state = initialState, action) => {
             return { ...state, user: action.user };
         case 'SIGN-UP':
             return { ...state, user: action.user };
+            case 'SAVE-TMP':
+                return { ...state, tmpUser: action.user };
         case 'MODIFY':
             return { ...state, allergensToSave: action.allergensToSave };
         // debugger;

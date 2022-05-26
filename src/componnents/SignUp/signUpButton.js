@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../../css/signUp.css';
+import { fetchUser } from '../fetch';
 import signUpAction from '../SignUp/action';
 import store from '../store'
 
@@ -49,31 +50,13 @@ debugger
    }
 
   };
-  fetch(`http://localhost:4020/api/users`, {
-    method: method,
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(newUser)
+  fetchUser(newUser,method).then((response) => {
+    debugger
+    console.log(response);
+    store.dispatch(signUpAction(response))
+    console.log('new state: ', store.getState())
+    alert("hi "+response.firstname);
+
   })
-    .then((response) => {
 
-      if (response.status === 200 && response.ok) {
-        return response.json()
-      }
-      else {
-        throw new Error()
-      }
-    })
-    .then((response) => {
-      console.log(response);
-      store.dispatch(signUpAction(response))
-      console.log('new state: ', store.getState())
-      alert("hi "+response.firstname);
-
-    })
-    .catch((reson) => {
-      alert(reson)
-    }
-    )
 }
