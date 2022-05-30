@@ -12,11 +12,27 @@ import SimpleBottomNavigation from './navegtion'
 import SimpleDialogDemo from './dialogAlergens'
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
-import  FormDialogNutritionalFact from './dialogNutrition';
+import FormDialogNutritionalFact from './dialogNutrition';
+import { flexbox } from '@mui/system';
+import { FormatAlignJustify } from '@mui/icons-material';
+import { Tab,Tabs,Stack } from '@mui/material';
+import UploadAndDisplayImage from './image';
+
+import { FileUpload } from 'primereact/fileupload';
+import "primeicons/primeicons.css";
 const Input = styled('input')({
   display: 'none',
 });
 export default function Home() {
+
+  const chooseOptions = {label: 'Choose', icon: 'pi pi-fw pi-plus'};
+const uploadOptions = {label: 'Uplaod', icon: 'pi pi-upload', className: 'p-button-success'};
+const cancelOptions = {label: 'Cancel', icon: 'pi pi-times', className: 'p-button-danger'};
+
+function myUploader(params) {
+  console.log("object");
+}
+
   // let path = window.location.href;
 
   // useEffect(() => {
@@ -36,10 +52,24 @@ export default function Home() {
 
           </CardActions>
           <h2>upload barcode camera scan</h2>
-           <FileUploadDemo/>  
-         {/* < ImageUpload />*/}
-<SimpleDialogDemo></SimpleDialogDemo>
-<FormDialogNutritionalFact/>
+          <FileUploadDemo />
+          <UploadAndDisplayImage></UploadAndDisplayImage>
+          {/* < ImageUpload />*/}
+
+          <FileUpload name="demo[]" url="./upload" chooseOptions={chooseOptions} uploadOptions={uploadOptions} cancelOptions={cancelOptions} uploadHandler={myUploader} />
+ 
+          <Tabs  aria-label="basic tabs example">
+         </Tabs>      
+         
+           <Stack direction="row" spacing={1} sx={{alignItems: 'center'}}>
+              <SimpleDialogDemo  sx={{margin:2}} flexItem/>
+          
+          <FormDialogNutritionalFact    flexItem/>
+
+  
+        
+        </Stack>
+
         </CardContent>
 
       </Card>

@@ -18,7 +18,8 @@ export  function FileUploadDemo ()  {
   const toast = useRef(null);
   const fileUploadRef = useRef(null);
 
-  const onUpload = () => {
+  const onUpload = (e) => {
+    console.log(e)
     toast.current.show({
       severity: "info",
       summary: "Success",
@@ -27,6 +28,7 @@ export  function FileUploadDemo ()  {
   };
 
   const onTemplateSelect = (e) => {
+    console.log(e.files[0])
     let _totalSize = totalSize;
     e.files.forEach((file) => {
       _totalSize += file.size;
@@ -36,11 +38,12 @@ export  function FileUploadDemo ()  {
   };
 
   const onTemplateUpload = (e) => {
+    console.log(e.files[0])
     let _totalSize = 0;
     e.files.forEach((file) => {
       _totalSize += file.size || 0;
     });
-
+    onUpload(e.files[0])
     setTotalSize(_totalSize);
     toast.current.show({
       severity: "info",
@@ -90,7 +93,7 @@ export  function FileUploadDemo ()  {
   const itemTemplate = (file, props) => {
     return (
       <div className="flex align-items-center flex-wrap">
-        <div className="flex align-items-center" style={{ width: "40%" }}>
+        <div className="flex align-items-center" style={{ width: "70%" }}>
           <img
             alt={file.name}
             role="presentation"
@@ -107,19 +110,19 @@ export  function FileUploadDemo ()  {
           severity="warning"
           className="px-3 py-2"
         />
-        <Button
+        {/* <Button
           type="button"
           icon="pi pi-times"
           className="p-button-outlined p-button-rounded p-button-danger ml-auto"
           onClick={() => onTemplateRemove(file, props.onRemove)}
-        />
+        /> */}
       </div>
     );
   };
-
+// className="flex align-items-center flex-column"
   const emptyTemplate = () => {
     return (
-      <div className="flex align-items-center flex-column">
+      <div >
         <i
           className="pi pi-image mt-3 p-5"
           style={{
@@ -170,7 +173,6 @@ export  function FileUploadDemo ()  {
           ref={fileUploadRef}
           name="demo[]"
           url="https://primefaces.org/primereact/showcase/upload.php"
-          multiple
           accept="image/*"
           maxFileSize={1000000}
           onUpload={onTemplateUpload}
