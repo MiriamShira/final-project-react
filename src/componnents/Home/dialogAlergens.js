@@ -9,7 +9,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import AllergensForm from '../../componnents/SignUp/collapsible/allergens';
 import store from '../store'
 import { fetchUser } from '../fetch';
+
 import saveTmpAction from '../SignUp/collapsible/saveTmpUserAction';
+import signUpAction from '../SignUp/action';
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
 
@@ -33,9 +35,22 @@ export default function FormDialog() {
             console.log(response);
             store.dispatch(saveTmpAction(response))
             console.log('new state: ', store.getState().tmpUser)
-            alert("saved  allergens ");
+            alert("saved  allergens to tmp user ");
 
         })
+  }
+  else{
+    let User=store.getState().user;
+    User.alerts.allergens=store.getState().allergensToSave;
+  
+      fetchUser(User,'POST').then((response )=>{
+          debugger
+          console.log(response);
+          store.dispatch(signUpAction(response))
+          console.log('new state: ', store.getState().user)
+          alert("saved  allergens to user ");
+
+      })
   }
         setOpen(false);
       };

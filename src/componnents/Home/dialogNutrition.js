@@ -7,6 +7,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import NutritionalFact from '../SignUp/collapsible/nutritionalFact'
+import store from "../store";
+import { fetchUser } from '../fetch';
+import saveTmpAction from '../SignUp/collapsible/saveTmpUserAction';
+import signUpAction from '../SignUp/action';
 export default function FormDialogNutritionalFact() {
   const [open, setOpen] = React.useState(false);
 
@@ -20,8 +24,39 @@ export default function FormDialogNutritionalFact() {
   };
 
   
-  const handleSave = () => {
+  
 // check if there is an exsisting user outerwise saves info to database
+
+const handleSave = () => {
+  // check if there is an exsisting user outerwise saves info to database
+if(store.getState().user.firstname===''){
+    //action to save allerens for tmpUser.
+    let tmpUser=store.getState().tmpUser;
+    tmpUser.alerts.nutritionalFacts=store.getState().nutritionalFactlist;
+  
+      fetchUser(tmpUser,'POST').then((response )=>{
+          debugger
+          console.log(response);
+          store.dispatch(saveTmpAction(response))
+          console.log('new state: ', store.getState().tmpUser)
+          alert("saved  allergens to tmp user ");
+
+      })
+}
+else{
+  let User=store.getState().user;
+  User.alerts.nutritionalFacts=store.getState().nutritionalFactlist;
+
+    fetchUser(User,'POST').then((response )=>{
+        debugger
+        //לבדוק איזה אירוע להשתמש אירוע חדש עידכון אלרגנים או רישום
+        console.log(response);
+        store.dispatch(signUpAction(response))
+        console.log('new state: ', store.getState().user)
+        alert("saved  allergens to user ");
+
+    })
+}
     setOpen(false);
   };
   return (
