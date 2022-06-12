@@ -29,20 +29,20 @@ export  function FileUploadDemo ()  {
 
   const onTemplateSelect = (e) => {
     console.log(e.files[0])
-    let _totalSize = totalSize;
-    e.files.forEach((file) => {
-      _totalSize += file.size;
-    });
+    // let _totalSize = totalSize;
+    // e.files.forEach((file) => {
+    //   _totalSize += file.size;
+    // });
 
-    setTotalSize(_totalSize);
+    // setTotalSize(_totalSize);
   };
 
   const onTemplateUpload = (e) => {
     console.log(e.files[0])
     let _totalSize = 0;
-    e.files.forEach((file) => {
-      _totalSize += file.size || 0;
-    });
+    // e.files.forEach((file) => {
+    //   _totalSize += file.size || 0;
+    // });
     onUpload(e.files[0])
     setTotalSize(_totalSize);
     toast.current.show({
@@ -172,7 +172,7 @@ export  function FileUploadDemo ()  {
         <FileUpload
           ref={fileUploadRef}
           name="demo[]"
-          url="https://primefaces.org/primereact/showcase/upload.php"
+          url="https://localhost:4020//api/product/"
           accept="image/*"
           maxFileSize={1000000}
           onUpload={onTemplateUpload}

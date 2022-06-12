@@ -41,7 +41,8 @@ function Form(props) {
         if(user!==null)
         {
           debugger
-          history.push('/signup');
+          alert(`welcome back ${user}`)
+          history.push('/');
           // <Home/>
 
         }
