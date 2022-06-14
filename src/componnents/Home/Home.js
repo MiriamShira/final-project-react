@@ -20,6 +20,8 @@ import UploadAndDisplayImage from './image';
 import TextField from '@mui/material/TextField';
 import { FileUpload } from 'primereact/fileupload';
 import "primeicons/primeicons.css";
+
+import store from '../store'
 const Input = styled('input')({
   display: 'none',
 });
@@ -40,8 +42,12 @@ export default function Home() {
   //   alert("changed");
   // }, [window.location.href]);
   const [barcode,setbarcode]=useState(0);
+  const email=store.getState().user.email;
+  const password=store.getState().user.password;
+  //||store.getSate().tmpUser
   function uplodeBarcode(){
-    fetch(`http://localhost:4020/api/product/${barcode}`)
+
+    fetch(`http://localhost:4020/api/users/byBarcode/${barcode}/${email}`)
       .then((response) => {
         if (response.status==200&& response.ok)
         return response.json();
