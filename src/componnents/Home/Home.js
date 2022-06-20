@@ -1,11 +1,10 @@
 import React from 'react';
 import ImageUpload from './uploadingimage';
-//////
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import Typography from '@mui/material/Typography';
 import { FileUploadDemo } from './uplodePrime';
 import SimpleBottomNavigation from './navegtion'
@@ -41,24 +40,24 @@ export default function Home() {
   //   debugger
   //   alert("changed");
   // }, [window.location.href]);
-  const [barcode,setbarcode]=useState(0);
-  const email=store.getState().user.email;
-  const password=store.getState().user.password;
+  const [barcode, setbarcode] = useState(0);
+  const email = store.getState().user.email;
+  const password = store.getState().user.password;
   //||store.getSate().tmpUser
-  function uplodeBarcode(){
+  function uplodeBarcode() {
 
     fetch(`http://localhost:4020/api/users/byBarcode/${barcode}/${email}`)
       .then((response) => {
-        if (response.status==200&& response.ok)
-        return response.json();
-      }).then((res)=>{
+        if (response.status == 200 && response.ok)
+          return response.json();
+      }).then((res) => {
         alert(res)
       }
 
-      ).catch((err)=>{
+      ).catch((err) => {
         alert(err)
       })
-  
+
   }
   return (
     <div>
@@ -73,8 +72,8 @@ export default function Home() {
           </CardActions>
           <h2>upload barcode camera scan</h2>
           <FileUploadDemo />
-          <TextField type="text" placeholder='enter barcode:' onChange={(e)=>{
-              setbarcode(e.target.value)
+          <TextField type="text" placeholder='enter barcode:' onChange={(e) => {
+            setbarcode(e.target.value)
           }} ></TextField>
           <Button onClick={uplodeBarcode}> click to get info </Button>
           {/* <UploadAndDisplayImage></UploadAndDisplayImage> */}
