@@ -1,23 +1,17 @@
-import { render } from '@testing-library/react';
-import react, { useState } from 'react';
+import { useState } from 'react';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import '../../css/signIn.css';
 import { useHistory } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 import signInAction from '../../Store/Actions/SignInAction';
-import { Dispatch } from 'react';
 import store from '../../Store/store'
-import Home from '../Home/Home';
 
 export default function SignInForm() {
-
   return (
     <div id="signInform">
       <FormHeader title="signIn" />
       <Form />
       <br></br>
-      {/* <OtherMethods /> */}
     </div>
   )
 }
@@ -29,7 +23,7 @@ const FormHeader = props => (
 
 function Form(props) {
   const [userName, setuserName] = useState(store.getState().email);
- //  const [userName, setuserName] = useState('');
+  //  const [userName, setuserName] = useState('');
   const [password, setpassword] = useState('');
   const history = useHistory();
   // const navigate = useNavigate();
@@ -38,13 +32,10 @@ function Form(props) {
     <div id="button" className="row">
       <button onClick={async () => {
         const user = await signIn(userName, password)
-        if(user!==null)
-        {
+        if (user !== null) {
           debugger
           alert(`welcome back ${user}`)
           history.push('/');
-          // <Home/>
-
         }
         // .then(() => history.push('/'));
       }}>{props.title}</button>
@@ -71,28 +62,6 @@ const FormInput = props => (
   </div>
 );
 
-// const OtherMethods = props => (
-//   <div id="alternativesignIn">
-//     <label for="iconGroup">Or sign in with:</label>
-//     <div id="iconGroup">
-//       <Facebook />
-//       <Twitter />
-//       <Google />
-//     </div>
-//   </div>
-// );
-
-// const Facebook = props => (
-//   <a href="#" id="facebookIcon">Facebook</a>
-// );
-
-// const Twitter = props => (
-//   <a href="#" id="twitterIcon"></a>
-// );
-
-// const Google = props => (
-//   <a href="#" id="googleIcon"></a>
-// );
 async function signIn(userName, password) {
   debugger
   let data
@@ -100,16 +69,16 @@ async function signIn(userName, password) {
   console.log(userName, password)
   try {
     debugger
-    var response=await fetch(`http://localhost:4020/api/users/${userName}/${password}`)
-if(response.ok&&response.status === 200 ){
+    var response = await fetch(`http://localhost:4020/api/users/${userName}/${password}`)
+    if (response.ok && response.status === 200) {
 
-data=await response.json()
-store.dispatch(signInAction(data))
-debugger
-console.log(store.getState())
-alert("hi " + data.lastname);
-}
+      data = await response.json()
+      store.dispatch(signInAction(data))
+      debugger
+      console.log(store.getState())
+      alert("hi " + data.lastname);
+    }
   } catch (error) {
-    alert("err:"+error)
+    alert("err:" + error)
   }
 }

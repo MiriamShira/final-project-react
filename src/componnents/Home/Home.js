@@ -19,7 +19,7 @@ import UploadAndDisplayImage from './image';
 import TextField from '@mui/material/TextField';
 import { FileUpload } from 'primereact/fileupload';
 import "primeicons/primeicons.css";
-
+import Scan from '../scanBarcode/Scan'
 import store from '../../Store/store'
 const Input = styled('input')({
   display: 'none',
@@ -72,6 +72,7 @@ export default function Home() {
           </CardActions>
           <h2>upload barcode camera scan</h2>
           <FileUploadDemo />
+          <Scan/>
           <TextField type="text" placeholder='enter barcode:' onChange={(e) => {
             setbarcode(e.target.value)
           }} ></TextField>
