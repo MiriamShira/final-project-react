@@ -5,9 +5,9 @@ import ReactDOM from 'react-dom';
 import '../../css/signIn.css';
 import { useHistory } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
-import signInAction from './action';
+import signInAction from '../../Store/Actions/SignInAction';
 import { Dispatch } from 'react';
-import store from '../store'
+import store from '../../Store/store'
 import Home from '../Home/Home';
 
 export default function SignInForm() {

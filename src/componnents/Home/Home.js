@@ -21,7 +21,7 @@ import TextField from '@mui/material/TextField';
 import { FileUpload } from 'primereact/fileupload';
 import "primeicons/primeicons.css";
 
-import store from '../store'
+import store from '../../Store/store'
 const Input = styled('input')({
   display: 'none',
 });

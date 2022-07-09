@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../../../css/signUp.css';
-import allergensToSaveAction from './allergensArrayAction';
-import store from '../../store'
+import allergensToSaveAction from '../../../Store/Actions/allergensArrayAction';
+import store from '../../../Store/store'
 export default function AllergensForm() {
 
     const [commonAllergen, setcommonAllergen] = useState([]);

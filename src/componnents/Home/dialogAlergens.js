@@ -7,11 +7,11 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import AllergensForm from '../../componnents/SignUp/collapsible/allergens';
-import store from '../store'
-import { fetchUser } from '../fetch';
+import store from '../../Store/store'
+import { fetchUser } from '../../api/fetch';
 
-import saveTmpAction from '../SignUp/collapsible/saveTmpUserAction';
-import signUpAction from '../SignUp/action';
+import saveTmpAction from '../../Store/Actions/saveTmpUserAction';
+import signUpAction from '../../Store/Actions/SignUpAction';
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
 

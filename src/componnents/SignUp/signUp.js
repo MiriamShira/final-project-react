@@ -7,9 +7,9 @@ import '../../css/signUp.css';
 import CollapsibleComponentbyButton from './collapsible/collapsibleComponent';
 import { FormButton } from "./signUpButton"
 
-import signUpAction from '../SignUp/action';
-import { Dispatch } from 'react';
-import store from '../store'
+
+
+import store from '../../Store/store'
 
 export default function SignUpForm(props) {
  

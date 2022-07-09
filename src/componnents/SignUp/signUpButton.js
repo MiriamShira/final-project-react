@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import '../../css/signUp.css';
-import { fetchUser } from '../fetch';
-import signUpAction from '../SignUp/action';
-import store from '../store'
+import { fetchUser } from '../../api/fetch';
+import signUpAction from '../../Store/Actions/SignUpAction';
+import store from '../../Store/store';
 
 export function FormButton(props) {
 

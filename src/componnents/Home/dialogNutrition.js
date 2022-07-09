@@ -7,10 +7,10 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import NutritionalFact from '../SignUp/collapsible/nutritionalFact'
-import store from "../store";
-import { fetchUser } from '../fetch';
-import saveTmpAction from '../SignUp/collapsible/saveTmpUserAction';
-import signUpAction from '../SignUp/action';
+import store from "../../Store/store";
+import { fetchUser } from '../../api/fetch';
+import saveTmpAction from '../../Store/Actions/saveTmpUserAction';
+import signUpAction from '../../Store/Actions/SignUpAction';
 export default function FormDialogNutritionalFact() {
   const [open, setOpen] = React.useState(false);
 
