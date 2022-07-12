@@ -2,6 +2,14 @@
   "name": "final-project",
   "version": "0.1.0",
   "private": true,
+  "keywords": [
+    "quaggajs",
+    "quagga2",
+    "quagga",
+    "react",
+    "barcode",
+    "webpack"
+  ],
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -14,6 +22,7 @@
     "axios": "^0.27.2",
     "primeicons": "^5.0.0",
     "primereact": "^8.1.1",
+    "quagga": "^0.12.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-dropzone": "^14.2.1",

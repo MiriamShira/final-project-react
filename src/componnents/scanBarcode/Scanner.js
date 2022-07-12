@@ -59,7 +59,7 @@ const Scanner = ({
         drawingCtx.fillStyle = 'green';
 
         if (result) {
-            // console.warn('* quagga onProcessed', result);
+            
             if (result.boxes) {
                 drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute('width')), parseInt(drawingCanvas.getAttribute('height')));
                 result.boxes.filter((box) => box !== result.box).forEach((box) => {
@@ -87,6 +87,9 @@ const Scanner = ({
     useLayoutEffect(() => {
         Quagga.init({
             inputStream: {
+              
+                size: 800 , // restrict input-size to be 800px in width (long-side)
+                
                 type: 'LiveStream',
                 constraints: {
                     ...constraints,
@@ -94,11 +97,18 @@ const Scanner = ({
                     ...(!cameraId && { facingMode }),
                 },
                 target: scannerRef.current,
+                area: { // defines rectangle of the detection/localization area
+                    top: "0%",    // top offset
+                    right: "0%",  // right offset
+                    left: "0%",   // left offset
+                    bottom: "0%"  // bottom offset
+                  },
+                  singleChannel: true,
             },
             locator,
             numOfWorkers,
             decoder: { readers: decoders },
-            locate,
+            locate:true,
         }, (err) => {
             Quagga.onProcessed(handleProcessed);
 

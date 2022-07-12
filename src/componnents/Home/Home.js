@@ -61,7 +61,7 @@ export default function Home() {
   }
   return (
     <div>
-      <Card sx={{ minWidth: 275, maxWidth: 600, display: 'inline-block', margin: 5, minHeight: 700 }}>
+      <Card sx={{ minWidth: 275, maxWidth: 1600, display: 'inline-block', margin: 5, minHeight: 700 }}>
         <CardContent>
           {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           
@@ -71,22 +71,22 @@ export default function Home() {
 
           </CardActions>
           <h2>upload barcode camera scan</h2>
-          <FileUploadDemo />
+          {/* <FileUploadDemo /> */}
           <Scan/>
-          <TextField type="text" placeholder='enter barcode:' onChange={(e) => {
+          {/* <TextField type="text" placeholder='enter barcode:' onChange={(e) => {
             setbarcode(e.target.value)
           }} ></TextField>
-          <Button onClick={uplodeBarcode}> click to get info </Button>
+          <Button onClick={uplodeBarcode}> click to get info </Button> */}
           {/* <UploadAndDisplayImage></UploadAndDisplayImage> */}
           {/* < ImageUpload />*/}
           {/* 
           <FileUpload name="demo[]" url="./upload"
            chooseOptions={chooseOptions} uploadOptions={uploadOptions}
             cancelOptions={cancelOptions} uploadHandler={myUploader} /> */}
-
+{/* 
           <Tabs aria-label="basic tabs example">
-          </Tabs>
-
+          </Tabs> */}
+{/* 
           <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
             <SimpleDialogDemo sx={{ margin: 2 }} flexItem />
 
@@ -94,7 +94,7 @@ export default function Home() {
 
 
 
-          </Stack>
+          </Stack> */}
 
         </CardContent>
 
