@@ -6,9 +6,12 @@ import '../../css/signUp.css';
 import { fetchUser } from '../../api/fetch';
 import signUpAction from '../../Store/Actions/SignUpAction';
 import store from '../../Store/store';
-
+import {useHistory}from 'react-router-dom'
 export function FormButton(props) {
-
+const history=useHistory();
+const handelNavagation=()=>{
+  history.push('/');
+}
   // const [signup, setsignup] = useState(false);
   // useEffect(() => {
   //   if (signup === true)
@@ -19,7 +22,7 @@ export function FormButton(props) {
     <div id="button" className="row">
       <button onClick={() => {
         //setsignup(true)
-        signUpFetch(props.firstname, props.lastname, props.language, props.email, props.password)
+        signUpFetch(props.firstname, props.lastname, props.language, props.email, props.password).then(handelNavagation())
 
       }}
       >{props.title}</button>
@@ -50,13 +53,13 @@ debugger
    }
 
   };
-  fetchUser(newUser,method).then((response) => {
+  return fetchUser(newUser,method).then((response) => {
     debugger
     console.log(response);
     store.dispatch(signUpAction(response))
     console.log('new state: ', store.getState())
     alert("hi "+response.firstname);
-
+  
   })
 
 }

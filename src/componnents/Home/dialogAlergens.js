@@ -20,9 +20,9 @@ export default function FormDialog() {
   };
 
   const handleClose = () => {
-
     setOpen(false);
   };
+
   const handleSave = () => {
     // check if there is an exsisting user outerwise saves info to database
   if(store.getState().user.firstname===''){
@@ -53,7 +53,8 @@ export default function FormDialog() {
       })
   }
         setOpen(false);
-      };
+};
+
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>

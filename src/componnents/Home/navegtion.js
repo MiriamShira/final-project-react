@@ -11,7 +11,7 @@ import { linkClasses } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 
-function Kkk(props) {
+function Relocate(props) {
   console.log("hi");
   const history = useHistory();
   switch (props.newValue) {
@@ -42,7 +42,7 @@ export default function SimpleBottomNavigation() {
         onChange={(event, newValue) => {
           console.log(newValue);
           setValue(newValue);
-          return (<Kkk newValue={newValue}/>)
+          return (<Relocate newValue={newValue}/>)
         }}
       >
         <BottomNavigationAction label="Home" icon={<FoodBankIcon />} component={Link} to="/" />

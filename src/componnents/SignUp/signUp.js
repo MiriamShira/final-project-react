@@ -16,18 +16,16 @@ export default function SignUpForm(props) {
 
   return (
     <div id="signUpform">
-      <FormHeader title={props.title} />
+        <h2 id="headerTitle">{props.title}</h2>
+  
       <Form title={props.title} />
     </div>
   )
 }
 
-const FormHeader = props => (
-  <h2 id="headerTitle">{props.title}</h2>
-);
 
 function Form(props) {
-  const [firstname, setfirstname] = useState(store.getState().user.firstname);
+  const [firstname, setfirstname] = useState(store.getState().user.firstName);
   const [lastname, setlastname] = useState(store.getState().user.lastname);
   const [language, setlanguage] = useState(store.getState().user.language);
   const [email, setemail] = useState(store.getState().user.email);
