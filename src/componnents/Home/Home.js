@@ -70,7 +70,7 @@ export default function Home() {
             <SimpleBottomNavigation />
 
           </CardActions>
-          <h2>upload barcode camera scan</h2>
+          <h3>press start buttonto enable  barcode web camera scan</h3>
           {/* <FileUploadDemo /> */}
           <Scan/>
           {/* <TextField type="text" placeholder='enter barcode:' onChange={(e) => {

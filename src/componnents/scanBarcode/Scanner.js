@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Quagga from '@ericblade/quagga2';
 
 function getMedian(arr) {
+    console.log(arr)
     arr.sort((a, b) => a - b);
     const half = Math.floor(arr.length / 2);
     if (arr.length % 2 === 1) {
@@ -12,23 +13,40 @@ function getMedian(arr) {
 }
 
 function getMedianOfCodeErrors(decodedCodes) {
+    console.log(decodedCodes)
     const errors = decodedCodes.filter(x => x.error !== undefined).map(x => x.error);
     const medianOfErrors = getMedian(errors);
     return medianOfErrors;
 }
 
 const defaultConstraints = {
-    width: 640,
-    height: 480,
+    width: 140,
+    height: 180,
 };
 
 const defaultLocatorSettings = {
-    patchSize: 'medium',
+    patchSize: 'small',
     halfSample: true,
+
+        debug: {
+          showCanvas: false,
+          showPatches: false,
+          showFoundPatches: false,
+          showSkeleton: false,
+          showLabels: false,
+          showPatchLabels: false,
+          showRemainingPatchLabels: false,
+          boxFromPatches: {
+            showTransformed: false,
+            showTransformedBox: false,
+            showBB: false
+          }
+        }
+      
 };
 
 const defaultDecoders = ['ean_reader'];
-
+const tmphp='a63f0788de18ccab7ed2d6f4e92af916c623ee2c121b6efbf7d6d24dd955377a'
 const Scanner = ({
     onDetected,
     scannerRef,
@@ -41,6 +59,7 @@ const Scanner = ({
     decoders = defaultDecoders,
     locate = true,
 }) => {
+
     const errorCheck = useCallback((result) => {
         if (!onDetected) {
             return;
@@ -91,8 +110,10 @@ const Scanner = ({
                 size: 800 , // restrict input-size to be 800px in width (long-side)
                 
                 type: 'LiveStream',
+            
                 constraints: {
                     ...constraints,
+                
                     ...(cameraId && { deviceId: cameraId }),
                     ...(!cameraId && { facingMode }),
                 },
@@ -110,14 +131,19 @@ const Scanner = ({
             decoder: { readers: decoders },
             locate:true,
         }, (err) => {
+            console.log(constraints)
+            debugger
             Quagga.onProcessed(handleProcessed);
 
             if (err) {
                 return console.log('Error starting Quagga:', err);
             }
             if (scannerRef && scannerRef.current) {
+             
+                console.log("scannerRef",scannerRef)
                 Quagga.start();
                 if (onScannerReady) {
+                    console.log(onScannerReady,"onScannerReady")
                     onScannerReady();
                 }
             }
